@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "css": "npx tailwindcss -i styles.css -o ./public/styles.css --watch",
+    "build": "rm ./public/styles.css && yarn css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}
