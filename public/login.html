@@ -9,6 +9,37 @@
     <script src="./js/pages/login.js" type="module" defer></script>
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline text-violet-700">Login Page</h1>
+    <main class="flex items-center">
+      <form
+        id="loginForm"
+        class="bg-white px-7 pt-12 pb-16 max-w-sm mx-auto -mt-[5vh]"
+      >
+        <div class="flex row justify-between mb-12">
+          <h1 class="text-3xl font-bold">
+            Freddy's Artisanal Halloween Candy Shop
+          </h1>
+          <img class="w-24" src="./images/logo.svg" />
+        </div>
+        <div class="space-y-6 mb-16">
+          <div class="textField">
+            <label for="loginForm__username" class="hidden">Username</label>
+            <input
+              placeholder="Username"
+              id="loginForm__username"
+              type="text"
+            />
+          </div>
+          <div class="textField">
+            <label for="loginForm__password" class="hidden">Password</label>
+            <input
+              placeholder="Password"
+              id="loginForm__password"
+              type="password"
+            />
+          </div>
+        </div>
+        <button class="button">Login</button>
+      </form>
+    </main>
   </body>
 </html>

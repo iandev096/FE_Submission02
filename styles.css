@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply w-full bg-slate-100;
+}
+
+main {
+  @apply min-h-screen w-full bg-zinc-100 px-4;
+}
+
+.button {
+  @apply bg-black text-lg w-full px-8 py-2 text-white uppercase tracking-wider font-bold hover:bg-white hover:text-black transition-all border border-black active:bg-black active:text-white;
+}
+
+.textField {
+  @apply border border-zinc-300 px-2 h-11 focus-within:border-zinc-800 transition-all;
+}
+.textField > input {
+  @apply outline-0 h-full w-full;
+}
