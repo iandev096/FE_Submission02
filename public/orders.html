@@ -9,6 +9,153 @@
     <script src="./js/pages/orders.js" type="module" defer></script>
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline">Orders</h1>
+    <main class="grid grid-cols-6 max-w-7xl px-0 overflow-hidden mx-auto">
+      <!-- sidebar -->
+      <nav class="col-start-1 col-span-1 border-r border-zinc-400">
+        <div class="flex justify-center py-8">
+          <img class="w-24" src="./images/logo.svg" />
+        </div>
+        <ul class="space-y-3">
+          <li class="menuItem">
+            <a href="./dashboard.html">Dashboard</a>
+          </li>
+          <li class="menuItem text-blue-500">
+            <a href="./orders.html">Orders</a>
+          </li>
+          <li class="menuItem cursor-pointer" id="logout">Logout</li>
+        </ul>
+      </nav>
+
+      <!-- content -->
+      <div
+        class="col-start-2 col-span-5 max-h-screen overflow-y-scroll overflow-x-hidden py-6 hide-scrollbar"
+      >
+        <div class="mx-6">
+          <section class="mb-14">
+            <div class="flex justify-between items-center max-w-3xl mb-6">
+              <h1 class="sectionHeading mb-0">Orders</h1>
+              <form>
+                <div class="flex items-center">
+                  <div class="textField">
+                    <label for="searchForm__input" class="hidden"
+                      >Username</label
+                    >
+                    <input
+                      placeholder="Search"
+                      id="searchForm__input"
+                      type="text"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="bg-black py-[10px] px-3 text-white"
+                  >
+                    <svg
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      height="1.5rem"
+                      width="1.5rem"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- table -->
+            <div class="overflow-x-scroll">
+              <div class="min-w-[522px] max-w-3xl">
+                <div class="bg-white mb-4">
+                  <!-- header -->
+                  <div class="ordersGrid font-bold text-xs uppercase">
+                    <h2>Product Name</h2>
+                    <h2>Date</h2>
+                    <h2>Price($)</h2>
+                    <h2>Status</h2>
+                  </div>
+                  <!-- rows -->
+                  <div>
+                    <div class="ordersGrid processing">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid delivered">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid processing">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid delivered">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid processing">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                    <div class="ordersGrid">
+                      <p>Product</p>
+                      <p>20/11/22</p>
+                      <p>10</p>
+                      <p>Processing</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-3xl flex justify-between mt-4 items-center">
+              <p>Page <span>1</span> of <span>3</span></p>
+              <div class="flex gap-3">
+                <button class="bg-black text-white px-3 py-1">Prev</button>
+                <button class="bg-black text-white px-3 py-1">Next</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
