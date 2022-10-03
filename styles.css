@@ -28,7 +28,7 @@ main {
   }
 
   .textField {
-    @apply border border-zinc-300 px-2 h-11 focus-within:border-zinc-800 transition-all;
+    @apply border border-zinc-300 px-2 h-11 focus-within:border-zinc-800 transition-all bg-white;
   }
   .textField > input {
     @apply outline-0 h-full w-full;
@@ -73,7 +73,7 @@ main {
   }
 
   .bestSellersGrid {
-    @apply grid grid-cols-[2fr_1fr_1fr_1fr] py-2 px-5 border-b-2 border-zinc-100;
+    @apply grid grid-cols-[2fr_1fr_1fr_1fr] py-4 px-5 border-b-2 border-zinc-100;
   }
   .bestSellersGrid > * {
     @apply text-ellipsis whitespace-nowrap overflow-hidden;
@@ -84,6 +84,26 @@ main {
   .bestSellersGrid > *:last-child {
     @apply justify-self-end;
   }
-  .bestSellersGrid + .bestSellersGrid {
+
+  .ordersGrid {
+    @apply grid grid-cols-[2fr_1fr_1fr_1fr] py-4 px-5;
+  }
+  .ordersGrid > * {
+    @apply text-ellipsis whitespace-nowrap overflow-hidden;
+  }
+  .ordersGrid > *:not(:first-child) {
+    @apply justify-self-center;
+  }
+  .ordersGrid > *:last-child {
+    @apply justify-self-end;
+  }
+  .ordersGrid.processing {
+    @apply bg-red-100;
+  }
+  .ordersGrid.shiped {
+    @apply bg-white;
+  }
+  .ordersGrid.delivered {
+    @apply bg-green-100;
   }
 }
