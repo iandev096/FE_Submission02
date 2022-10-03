@@ -3,20 +3,87 @@
 @tailwind utilities;
 
 body {
-  @apply w-full bg-slate-100;
+  @apply w-full bg-zinc-100;
 }
 
 main {
   @apply min-h-screen w-full bg-zinc-100 px-4;
 }
 
-.button {
-  @apply bg-black text-lg w-full px-8 py-2 text-white uppercase tracking-wider font-bold hover:bg-white hover:text-black transition-all border border-black active:bg-black active:text-white;
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
-.textField {
-  @apply border border-zinc-300 px-2 h-11 focus-within:border-zinc-800 transition-all;
-}
-.textField > input {
-  @apply outline-0 h-full w-full;
+@layer components {
+  .button {
+    @apply bg-black text-lg w-full px-8 py-2 text-white uppercase tracking-wider font-bold hover:bg-white hover:text-black transition-all border border-black active:bg-black active:text-white;
+  }
+
+  .textField {
+    @apply border border-zinc-300 px-2 h-11 focus-within:border-zinc-800 transition-all;
+  }
+  .textField > input {
+    @apply outline-0 h-full w-full;
+  }
+
+  .menuItem {
+    @apply px-6 uppercase tracking-widest font-bold text-sm;
+  }
+
+  .sectionHeading {
+    @apply text-xl font-extralight tracking-widest uppercase mb-4;
+  }
+
+  .switch {
+    @apply relative inline-block w-10 h-5;
+  }
+  .switch input {
+    @apply opacity-0 w-0 h-0;
+  }
+  .slider {
+    @apply absolute cursor-pointer inset-0 bg-zinc-200 transition-all;
+  }
+
+  .slider:before {
+    @apply absolute h-4 w-4 top-[2px] left-[2px] bg-white transition-all;
+    content: "";
+  }
+
+  input:checked + .slider {
+    @apply bg-blue-500;
+  }
+
+  input:checked + .slider:before {
+    @apply translate-x-5;
+  }
+  /* Rounded sliders */
+  .slider.round {
+    @apply rounded-full;
+  }
+  .slider.round:before {
+    @apply rounded-full;
+  }
+
+  .bestSellersGrid {
+    @apply grid grid-cols-[2fr_1fr_1fr_1fr] py-2 px-5 border-b-2 border-zinc-100;
+  }
+  .bestSellersGrid > * {
+    @apply text-ellipsis whitespace-nowrap overflow-hidden;
+  }
+  .bestSellersGrid > *:not(:first-child) {
+    @apply justify-self-center;
+  }
+  .bestSellersGrid > *:last-child {
+    @apply justify-self-end;
+  }
+  .bestSellersGrid + .bestSellersGrid {
+  }
 }
