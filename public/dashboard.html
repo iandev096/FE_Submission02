@@ -6,9 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/pages/dashboard.js" type="module" defer></script>
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline">Dashboard</h1>
+    <main class="grid grid-cols-6 max-w-7xl px-0 overflow-hidden mx-auto">
+      <!-- sidebar -->
+      <nav class="col-start-1 col-span-1 border-r border-zinc-400">
+        <div class="flex justify-center py-8">
+          <img class="w-24" src="./images/logo.svg" />
+        </div>
+        <ul class="space-y-3">
+          <li class="menuItem text-blue-500">
+            <a href="./dashboard.html">Dashboard</a>
+          </li>
+          <li class="menuItem">
+            <a href="./orders.html">Orders</a>
+          </li>
+          <li class="menuItem">Logout</li>
+        </ul>
+      </nav>
+
+      <!-- content -->
+      <div
+        class="col-start-2 col-span-5 max-h-screen overflow-y-scroll overflow-x-hidden py-6 hide-scrollbar"
+      >
+        <div class="mx-6">
+          <section class="mb-14">
+            <h1 class="sectionHeading">Dashboard</h1>
+            <div class="flex gap-6">
+              <div class="px-4 py-3 space-y-1 bg-white">
+                <h2 class="uppercase text-xs font-bold">Today</h2>
+                <p>$<span>1456 </span> / <span>9</span> orders</p>
+              </div>
+              <div class="px-4 py-3 space-y-1 bg-white">
+                <h2 class="uppercase text-xs font-bold">Last Week</h2>
+                <p>$<span>14K </span> / <span>455</span> orders</p>
+              </div>
+              <div class="px-4 py-3 space-y-1 bg-white">
+                <h2 class="uppercase text-xs font-bold">Last Month</h2>
+                <p>$<span>314K</span> / <span>1233</span> orders</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-14">
+            <div class="flex justify-between items-center max-w-xl mb-4">
+              <h1 class="sectionHeading mb-0">Revenue (last 7 days)</h1>
+              <label for="revenueToggle" class="switch">
+                <input id="revenueToggle" type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <!-- chart -->
+            <div class="max-w-xl">
+              <canvas class="bg-white" id="revenueChart"></canvas>
+            </div>
+          </section>
+
+          <section class="mb-14">
+            <h1 class="sectionHeading">Bestsellers</h1>
+            <!-- table -->
+            <div class="overflow-x-scroll">
+              <div class="min-w-[522px] max-w-3xl">
+                <div class="bg-white mb-4">
+                  <!-- header -->
+                  <div class="bestSellersGrid font-bold text-xs uppercase">
+                    <h2>Product Name</h2>
+                    <h2>Price($)</h2>
+                    <h2>#Units Sold</h2>
+                    <h2>Revenue</h2>
+                  </div>
+                  <!-- rows -->
+                  <div>
+                    <div class="bestSellersGrid">
+                      <p>Product</p>
+                      <p>2145</p>
+                      <p>10</p>
+                      <p>21450</p>
+                    </div>
+                    <div class="bestSellersGrid">
+                      <p>Product</p>
+                      <p>2145</p>
+                      <p>10</p>
+                      <p>21450</p>
+                    </div>
+                    <div class="bestSellersGrid">
+                      <p>Product</p>
+                      <p>2145</p>
+                      <p>10</p>
+                      <p>21450</p>
+                    </div>
+                    <div class="bestSellersGrid">
+                      <p>Product</p>
+                      <p>2145</p>
+                      <p>10</p>
+                      <p>21450</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
