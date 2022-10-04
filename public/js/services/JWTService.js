@@ -7,10 +7,7 @@ export class JWTService {
   #refreshTimeout;
 
   constructor() {
-    const jwtData = this.get();
-    if (jwtData) {
-      this.initialize(jwtData);
-    }
+    this.initialize();
   }
 
   /**
@@ -55,6 +52,12 @@ export class JWTService {
    * @param {{accessToken: string, refreshToken: string, accessTokenExpAt: number, refreshTokenExpAt: number}} jwtData
    */
   initialize(jwtData) {
+    const jwtData = this.get();
+
+    if (!jwtData) {
+      return;
+    }
+
     const accessTokenExpTimeout = jwtData.accessTokenExpAt - Date.now();
     const refreshTokenExpTimeout = jwtData.refreshTokenExpAt - Date.now();
 
