@@ -15,7 +15,7 @@ function drawRevenueChart() {
     { value: 7, label: "Saturday" },
     { value: 4, label: "Sunday" },
   ];
-  drawBarChart(data, ctx, Chart);
+  drawBarChart(data, ctx);
 }
 
 init();
