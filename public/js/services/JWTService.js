@@ -2,9 +2,7 @@ const JWT_KEY = "__HAHA__ ";
 
 export class JWTService {
   #accessSubscriberFns = [];
-  #refreshSubscriberFns = [];
   #accessTimeout;
-  #refreshTimeout;
 
   constructor() {
     this.initialize();
@@ -26,7 +24,6 @@ export class JWTService {
       ...prev,
       ...data,
     };
-
     localStorage.setItem(JWT_KEY, JSON.stringify(value));
   }
 
@@ -51,7 +48,7 @@ export class JWTService {
   /**
    * @param {{accessToken: string, refreshToken: string, accessTokenExpAt: number, refreshTokenExpAt: number}} jwtData
    */
-  initialize(jwtData) {
+  initialize() {
     const jwtData = this.get();
 
     if (!jwtData) {
@@ -59,23 +56,15 @@ export class JWTService {
     }
 
     const accessTokenExpTimeout = jwtData.accessTokenExpAt - Date.now();
-    const refreshTokenExpTimeout = jwtData.refreshTokenExpAt - Date.now();
 
     if (accessTokenExpTimeout <= 0) {
       this.notifyAccessExpSubscribers();
+    } else {
+      this.#accessTimeout = setTimeout(
+        this.notifyAccessExpSubscribers.bind(this),
+        accessTokenExpTimeout
+      );
     }
-    if (refreshTokenExpTimeout <= 0) {
-      this.notifyRefreshExpSubscribers();
-    }
-
-    this.#accessTimeout = setTimeout(
-      this.notifyAccessExpSubscribers,
-      accessTokenExpTimeout
-    );
-    this.#refreshTimeout = setTimeout(
-      this.notifyRefreshExpSubscribers,
-      refreshTokenExpTimeout
-    );
   }
 
   notifyAccessExpSubscribers() {
@@ -85,31 +74,20 @@ export class JWTService {
     clearTimeout(this.#accessTimeout);
   }
 
-  notifyRefreshExpSubscribers() {
-    for (const fn of this.#refreshSubscriberFns) {
-      fn();
-    }
-    clearTimeout(this.#refreshTimeout);
-  }
-
   /**
    * @param {function} fn
    */
   subscribeAccessExp(fn) {
     this.#accessSubscriberFns.push(fn);
   }
-  /**
-   * @param {function} fn
-   */
-  subscribeRefreshExp(fn) {
-    this.#refreshSubscriberFns.push(fn);
+
+  unsubscribeAccess() {
+    clearTimeout(this.#accessTimeout);
+    this.#accessSubscriberFns = [];
   }
 
-  unsubscribeAll() {
-    clearTimeout(this.#accessTimeout);
-    clearTimeout(this.#refreshTimeout);
-    this.#accessSubscriberFns = [];
-    this.#refreshSubscriberFns = [];
+  clearJwt() {
+    localStorage.removeItem(JWT_KEY);
   }
 }
 
