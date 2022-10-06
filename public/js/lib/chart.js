@@ -62,3 +62,21 @@ export function drawBarChart(data, ctx) {
 
   return new Chart(ctx, config);
 }
+
+export function updateChart(data, chart) {
+  const labels = data.map((item) => item.label);
+  const values = data.map((item) => item.value);
+
+  chart.data.labels = labels;
+  chart.data.datasets = [
+    {
+      label: "",
+      data: values,
+      backgroundColor: BACKGROUND_COLORS.slice(0, data.length),
+      borderColor: BORDER_COLORS.slice(data.length),
+      borderWidth: 1,
+    },
+  ];
+
+  chart.update();
+}
