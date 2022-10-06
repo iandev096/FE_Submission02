@@ -4,8 +4,13 @@ const API_URL = `https://freddy.codesubmit.io`;
 
 export class AuthService {
   #jwtService;
+
   constructor() {
     this.#jwtService = JWTService;
+  }
+
+  handleAccessTokenExpired(fn) {
+    this.#jwtService.subscribeAccessExp(fn);
   }
 
   /**

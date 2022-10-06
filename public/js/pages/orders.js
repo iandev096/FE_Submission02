@@ -1,7 +1,9 @@
 import { ERROR } from "../../constants/error.js";
 import AuthService from "../services/AuthService.js";
 import OrdersService from "../services/OrdersService.js";
+import { createAuthModal } from "../util/authModal.js";
 import { createElem } from "../util/dom.js";
+import { handleNavLogout } from "../util/logout.js";
 import { numToReadable } from "../util/numbers.js";
 
 let orders = [];
@@ -42,33 +44,44 @@ async function fetchPageData(onSuccess, tries = 0) {
   }
 }
 
+const showAuthModal = () => {
+  const modalElem = createAuthModal();
+  const mainElem = document.querySelector("main");
+  mainElem.append(modalElem);
+};
+
 function handleDataFetchSuccess() {
   console.log(orders);
   if (orders.length === 0) {
-    const tableSkeletonElem = document.querySelector("#tableSkeleton");
-    tableSkeletonElem.classList.toggle("animate-pulse");
-    tableSkeletonElem.classList.add("flex", "justify-center", "items-center");
-    const goBackElem = createElem("div");
-    goBackElem.classList.add("text-center", "py-8", "px-6", "mx-auto");
-    const goBackText = createElem("p", "", "No results found.");
-    goBackText.classList.add("uppercase", "font-bold");
-    const goBackButton = createElem("button", "", "Go Back");
-    goBackButton.classList.add("bg-black", "text-white", "px-4", "py-2");
-    goBackButton.addEventListener("pointerup", () => {
-      loadPage(1);
-    });
-
-    goBackElem.append(goBackText, goBackButton);
-
-    tableSkeletonElem.append(goBackElem);
-
-    console.log(tableSkeletonElem);
-
+    renderBackComponent();
     return;
   }
   enablePageNavButtons();
   renderOrdersTable();
   handleSearch();
+  handleNavLogout();
+  AuthService.handleAccessTokenExpired(showAuthModal);
+}
+
+function renderBackComponent() {
+  const tableSkeletonElem = document.querySelector("#tableSkeleton");
+  tableSkeletonElem.classList.toggle("animate-pulse");
+  tableSkeletonElem.classList.add("flex", "justify-center", "items-center");
+  const goBackElem = createElem("div");
+  goBackElem.classList.add("text-center", "py-8", "px-6", "mx-auto");
+  const goBackText = createElem("p", "", "No results found.");
+  goBackText.classList.add("uppercase", "font-bold");
+  const goBackButton = createElem("button", "", "Go Back");
+  goBackButton.classList.add("bg-black", "text-white", "px-4", "py-2");
+  goBackButton.addEventListener("pointerup", () => {
+    loadPage(1);
+  });
+
+  goBackElem.append(goBackText, goBackButton);
+
+  tableSkeletonElem.append(goBackElem);
+
+  console.log(tableSkeletonElem);
 }
 
 function handleSearch() {

@@ -3,6 +3,7 @@ import { drawBarChart, updateChart } from "../lib/chart.js";
 import AuthService from "../services/AuthService.js";
 import DashboardService from "../services/DashboardService.js";
 import { createElem } from "../util/dom.js";
+import { handleNavLogout } from "../util/logout.js";
 import { numToReadable } from "../util/numbers.js";
 
 let bestSellers = [];
@@ -17,6 +18,12 @@ function init() {
 
   fetchPageData(handleDataFetchSuccess);
 }
+
+const showAuthModal = () => {
+  const modalElem = createAuthModal();
+  const mainElem = document.querySelector("main");
+  mainElem.append(modalElem);
+};
 
 async function fetchPageData(onSuccess, tries = 0) {
   try {
@@ -45,6 +52,8 @@ function handleDataFetchSuccess() {
   setStats();
   renderRevenueChart();
   renderBestSellersTable();
+  handleNavLogout();
+  AuthService.handleAccessTokenExpired(showAuthModal);
 }
 
 function setStats() {

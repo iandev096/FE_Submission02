@@ -71,7 +71,7 @@ export class JWTService {
     for (const fn of this.#accessSubscriberFns) {
       fn();
     }
-    clearTimeout(this.#accessTimeout);
+    this.unsubscribeAccess();
   }
 
   /**
