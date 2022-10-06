@@ -10,18 +10,22 @@
     <script src="./js/pages/dashboard.js" type="module" defer></script>
   </head>
   <body>
-    <main class="grid grid-cols-6 max-w-7xl px-0 overflow-hidden mx-auto">
+    <main
+      class="px-5 md:px-0 md:grid grid-cols-6 max-w-7xl overflow-hidden mx-auto"
+    >
       <!-- sidebar -->
-      <nav class="col-start-1 col-span-1 border-r border-zinc-400">
+      <nav
+        class="col-start-1 col-span-1 md:border-r border-zinc-400 md:mb-0 mb-5"
+      >
         <div class="flex justify-center py-8">
           <img class="w-24" src="./images/logo.svg" />
         </div>
-        <ul class="space-y-3">
+        <ul class="md:space-y-3 md:block flex justify-center">
           <li class="menuItem text-blue-500">
             <a href="./dashboard.html">Dashboard</a>
           </li>
           <li class="menuItem">
-            <a href="./orders.html">Orders</a>
+            <a href="./orders.html?page=1">Orders</a>
           </li>
           <li class="menuItem cursor-pointer" id="logout">Logout</li>
         </ul>
@@ -31,36 +35,48 @@
       <div
         class="col-start-2 col-span-5 max-h-screen overflow-y-scroll overflow-x-hidden py-6 hide-scrollbar"
       >
-        <div class="mx-6">
+        <div class="md:mx-14">
           <section class="mb-14">
             <h1 class="sectionHeading">Dashboard</h1>
             <div class="flex gap-6">
               <div class="px-4 py-3 space-y-1 bg-white">
                 <h2 class="uppercase text-xs font-bold">Today</h2>
-                <p>$<span>1456 </span> / <span>9</span> orders</p>
+                <!-- <p>$<span>1456 </span> / <span>9</span> orders</p> -->
+                <p id="todayAmt" class="bg-gray-300 h-5 w-24 animate-pulse"></p>
               </div>
               <div class="px-4 py-3 space-y-1 bg-white">
-                <h2 class="uppercase text-xs font-bold">Last Week</h2>
-                <p>$<span>14K </span> / <span>455</span> orders</p>
+                <h2 class="uppercase text-xs font-bold">This Month</h2>
+                <!-- <p>$<span>14K </span> / <span>455</span> orders</p> -->
+                <p
+                  id="thisMonthAmt"
+                  class="bg-gray-300 h-5 w-24 animate-pulse"
+                ></p>
               </div>
               <div class="px-4 py-3 space-y-1 bg-white">
-                <h2 class="uppercase text-xs font-bold">Last Month</h2>
-                <p>$<span>314K</span> / <span>1233</span> orders</p>
+                <h2 class="uppercase text-xs font-bold">Last Months</h2>
+                <!-- <p>$<span>314K</span> / <span>1233</span> orders</p> -->
+                <p
+                  id="lastMonthAmt"
+                  class="bg-gray-300 h-5 w-24 animate-pulse"
+                ></p>
               </div>
             </div>
           </section>
 
           <section class="mb-14">
             <div class="flex justify-between items-center max-w-xl mb-4">
-              <h1 class="sectionHeading mb-0">Revenue (last 7 days)</h1>
+              <h1 id="revenueToggleHeading" class="sectionHeading mb-0">
+                Revenue (last 7 days)
+              </h1>
               <label for="revenueToggle" class="switch">
-                <input id="revenueToggle" type="checkbox" />
+                <input id="revenueToggle" type="checkbox" disabled />
                 <span class="slider round"></span>
               </label>
             </div>
             <!-- chart -->
-            <div class="max-w-xl">
-              <canvas class="bg-white" id="revenueChart"></canvas>
+            <div id="chartContainer" class="max-w-xl">
+              <!-- <canvas class="bg-white" id="revenueChart"></canvas> -->
+              <div class="w-full aspect-[576/288] bg-gray-300 animate-pulse" />
             </div>
           </section>
 
@@ -68,16 +84,14 @@
             <h1 class="sectionHeading">Bestsellers</h1>
             <!-- table -->
             <div class="overflow-x-scroll">
-              <div class="min-w-[522px] max-w-3xl">
-                <div class="bg-white mb-4">
-                  <!-- header -->
+              <div id="tableStage" class="min-w-[522px] max-w-3xl">
+                <!-- <div class="bg-white mb-4">
                   <div class="bestSellersGrid font-bold text-xs uppercase">
                     <h2>Product Name</h2>
                     <h2>Price($)</h2>
                     <h2>#Units Sold</h2>
                     <h2>Revenue</h2>
                   </div>
-                  <!-- rows -->
                   <div>
                     <div class="bestSellersGrid">
                       <p>Product</p>
@@ -104,7 +118,8 @@
                       <p>21450</p>
                     </div>
                   </div>
-                </div>
+                </div> -->
+                <div class="w-full h-72 bg-gray-300 animate-pulse" />
               </div>
             </div>
           </section>
