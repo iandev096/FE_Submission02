@@ -110,4 +110,20 @@ main {
   .ordersGrid.delivered {
     @apply bg-green-100;
   }
+
+  .modal {
+    @apply fixed inset-0 bg-black/50 flex justify-center items-center;
+  }
+  .modalContent {
+    @apply bg-white w-full max-w-[400px] px-5 py-8 text-center -mt-[12vh];
+  }
+  .modalHeading {
+    @apply text-3xl font-bold tracking-wider mb-6;
+  }
+  .modalText {
+    @apply text-xl mb-8;
+  }
+  .modalButtons {
+    @apply flex justify-center gap-5;
+  }
 }
