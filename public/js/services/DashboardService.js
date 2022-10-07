@@ -1,4 +1,4 @@
-import { ERROR } from "../../constants/error.js";
+import { ERROR } from "../constants/error.js";
 import { waitFor } from "../util/time.js";
 import AuthService from "./AuthService.js";
 import JWTService from "./JWTService.js";

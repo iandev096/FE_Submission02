@@ -1,4 +1,4 @@
-import { ERROR } from "../../constants/error.js";
+import { ERROR } from "../constants/error.js";
 import { drawBarChart, updateChart } from "../lib/chart.js";
 import AuthService from "../services/AuthService.js";
 import DashboardService from "../services/DashboardService.js";
