@@ -57,6 +57,11 @@ export function drawBarChart(data, ctx) {
           beginAtZero: true,
         },
       },
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
     },
   };
 
