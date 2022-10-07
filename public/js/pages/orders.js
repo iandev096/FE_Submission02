@@ -92,7 +92,7 @@ function handleSearch() {
   if (searchTerm.trim().length > 1) {
     searchInputElem.value = searchTerm;
     clearSearchElem.classList.remove("hidden");
-    clearSearchElem.addEventListener("click", (e) => {
+    clearSearchElem.addEventListener("pointerup", (e) => {
       e.preventDefault();
       searchPage = 1;
       loadPage(1);
@@ -130,14 +130,14 @@ function enablePageNavButtons() {
   const nextElem = document.querySelector("#next");
   nextElem.removeAttribute("disabled");
 
-  nextElem.addEventListener("click", () => {
+  nextElem.addEventListener("pointerup", () => {
     if (searchTerm.trim().length > 0) {
       loadNextPage(searchPage, searchTerm);
     } else {
       loadNextPage(page);
     }
   });
-  prevElem.addEventListener("click", () => {
+  prevElem.addEventListener("pointerup", () => {
     if (searchTerm.trim().length > 0) {
       loadPrevPage(searchPage, searchTerm);
     } else {
