@@ -1084,11 +1084,6 @@ input:checked + .slider:before {
   padding-bottom: 0.25rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -1105,6 +1100,10 @@ input:checked + .slider:before {
 
 .pb-16 {
   padding-bottom: 4rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-center {
