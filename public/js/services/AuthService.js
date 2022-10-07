@@ -1,3 +1,4 @@
+import { ERROR } from "../constants/error.js";
 import JWTService from "./JWTService.js";
 
 const API_URL = `https://freddy.codesubmit.io`;
@@ -69,7 +70,7 @@ export class AuthService {
         });
 
         if (response.status !== 200) {
-          throw new Error("Could not refresh auth");
+          throw new Error(ERROR.REFRESH_FAILED);
         }
 
         const data = await response.json();
@@ -80,7 +81,7 @@ export class AuthService {
         throw err;
       }
     } else {
-      throw new Error("User is not authenticated");
+      throw new Error(ERROR.NOT_AUTHENTICATED);
     }
   }
 }
