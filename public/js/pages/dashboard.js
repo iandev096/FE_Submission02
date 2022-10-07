@@ -89,7 +89,7 @@ function renderRevenueChart() {
   const chartContainerElem = document.querySelector("#chartContainer");
 
   const chartElem = createElem("canvas", "#revenueChart");
-  chartElem.classList.add("bg-white", "px-2");
+  chartElem.classList.add("bg-white", "px-3", "pt-5");
   chartContainerElem.replaceChildren(chartElem);
 
   const ctx = document.querySelector("#revenueChart").getContext("2d");
