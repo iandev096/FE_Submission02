@@ -1,4 +1,4 @@
-import { ERROR } from "../../constants/error.js";
+import { ERROR } from "../constants/error.js";
 import AuthService from "../services/AuthService.js";
 import OrdersService from "../services/OrdersService.js";
 import { createAuthModal } from "../util/authModal.js";
@@ -38,7 +38,7 @@ async function fetchPageData(onSuccess, tries = 0) {
     } else if (err.message === ERROR.NOT_AUTHENTICATED) {
       window.location.replace("login.html");
     } else {
-      // TODO: show nentwork error modal
+      // TODO: show network error modal
       console.error(err);
     }
   }
